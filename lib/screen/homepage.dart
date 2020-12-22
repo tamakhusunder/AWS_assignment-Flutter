@@ -26,13 +26,21 @@ class _HomepageState extends State<Homepage> {
 
   Widget _body() {
     return Container(
-      child: _newsfeed(),
+      child: ListView(
+        children: [
+          _card(1),
+          _card(2),
+          _card(3),
+        ],
+      ),
     );
   }
 
-  Widget _newsfeed() {
+  Widget _card(int num) {
+    int number = num;
     return Card(
-      child: ListView(
+      margin: EdgeInsets.all(10),
+      child: Column(
         children: <Widget>[
           Row(
             children: <Widget>[
@@ -96,11 +104,11 @@ class _HomepageState extends State<Homepage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, "/details");
+              Navigator.pushNamed(context, "/details", arguments: "$number");
             },
             child: Expanded(
               child: Image(
-                image: AssetImage("assets/images/dog.png"),
+                image: AssetImage("assets/images/pic$number.png"),
               ),
             ),
           ),

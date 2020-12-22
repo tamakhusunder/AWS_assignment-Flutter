@@ -3,16 +3,22 @@ import 'package:flutter/material.dart';
 class Detailpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String arg = ModalRoute.of(context).settings.arguments;
+    print(arg);
+    int num = int.parse(arg);
+    print(num);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Facebook"),
+        title: Text("Detail Page"),
         backgroundColor: Colors.blue,
       ),
-      body: _body(),
+      body: _body(num),
     );
   }
 
-  Widget _body() {
+  Widget _body(int num) {
+    print(num);
     return ListView(
       children: <Widget>[
         RichText(
@@ -38,7 +44,7 @@ class Detailpage extends StatelessWidget {
         ),
         Expanded(
           child: Image(
-            image: AssetImage("assets/images/dog.png"),
+            image: AssetImage("assets/images/pic$num.png"),
           ),
         ),
       ],
